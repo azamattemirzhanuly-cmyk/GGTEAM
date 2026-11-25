@@ -65,6 +65,13 @@ td.h2 { height: 84px; }
 .tchart > div { padding: 8px 10px; min-width: 0; }
 .tchart > div + div { border-left: 1px solid var(--rule); }
 .tchart b { display: block; padding-bottom: 4px; border-bottom: 2px solid var(--ink); font-size: 14px; }
+.web { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px 14px; align-items: center; margin: 6px 0 10px; }
+.web .c { grid-column: 2; grid-row: 2; text-align: center; font-family: var(--serif); font-weight: 700; font-size: 16px; border: 2px solid var(--blue); border-radius: 50%; padding: 16px 6px; }
+.web .b { border: 1px dashed var(--soft); border-radius: 20px; height: 40px; }
+.web .b1 { grid-column: 1; grid-row: 1; } .web .b2 { grid-column: 3; grid-row: 1; }
+.web .b3 { grid-column: 1; grid-row: 3; } .web .b4 { grid-column: 3; grid-row: 3; }
+.web .b5 { grid-column: 1; grid-row: 2; } .web .b6 { grid-column: 3; grid-row: 2; }
+p.sq { margin: 6px 0 2px; font-weight: 700; font-size: 14px; }
 .total { display: flex; justify-content: flex-end; gap: 24px; margin-top: 14px; font-weight: 700; font-size: 15px; }
 .total span b { display: inline-block; width: 60px; border-bottom: 1px solid var(--ink); }
 .teacher h1 { font-size: 22px; }
@@ -100,7 +107,7 @@ td.h2 { height: 84px; }
       <ul>
         <li>Шығарманың авторы мен жанрын анықтайды; мәтіннен негізгі ақпаратты табады.</li>
                 <li>Кейіпкерлердің бірегейлігін (қасиеті, әрекеті) сипаттап, оларды салыстырады.</li>
-        <li>Мәтінге сүйеніп, өз пікірін дәлелдейді.</li>
+        <li>Мәтінге сүйеніп, кейіпкерлерді салыстырады және өз ойын дәлелдейді.</li>
       </ul>
     </div>
     <div class="wide"><span class="lbl">Ойлау дағдыларының деңгейлері</span>Білу және түсіну · Қолдану · Жоғары деңгей дағдылары</div>
@@ -148,11 +155,21 @@ td.h2 { height: 84px; }
 
 
   <section class="task">
-    <div class="task-head"><span class="tnum">5</span><h2>Пікірталас: «Байлық адамның бірегейлігін өзгерте ме?» Өз пікіріңді жаз, шығармалардан бір дәлел келтір.</h2><span class="pts">2 балл</span></div>
-    <div class="body"><div class="tchart">
-      <div><b>Менің пікірім</b><div class="lines"><i></i><i></i><i></i><i></i></div></div>
-      <div><b>Дәлелім (шығармалардан)</b><div class="lines"><i></i><i></i><i></i><i></i></div></div>
-    </div></div>
+    <div class="task-head"><span class="tnum">5</span><h2>«Қыпшақ Сейітқұл». Кейіпкерлердің бойындағы қасиеттерді жаз.</h2><span class="pts">2 балл</span></div>
+    <div class="body">
+    <p class="sq">а) Сейітқұлдың бойындағы қасиеттерді жаз.</p>
+    <div class="web">
+      <div class="b b1"></div><div class="b b2"></div>
+      <div class="b b5"></div><div class="c">Сейітқұл</div><div class="b b6"></div>
+      <div class="b b3"></div><div class="b b4"></div>
+    </div>
+    <p class="sq">ә) Сейітқұлдың ағасының бойындағы қасиеттерді жаз.</p>
+    <div class="web">
+      <div class="b b1"></div><div class="b b2"></div>
+      <div class="b b5"></div><div class="c">Сейітқұлдың ағасы</div><div class="b b6"></div>
+      <div class="b b3"></div><div class="b b4"></div>
+    </div>
+    </div>
   </section>
 
   <div class="total"><span>Жинаған балы: <b></b> / 15</span><span>Мұғалімнің қолы: <b></b></span></div>
@@ -167,7 +184,7 @@ td.h2 { height: 84px; }
     <tr><td class="num">2</td><td>Атымтайдың төрт себебін мәтінге сай жазады (әр себепке 1 балл)</td><td class="b">4</td></tr>
     <tr><td class="num">3</td><td>Сейітқұл мен ағасының әрекетін атайды (1 балл); олардың айырмашылығын түсіндіреді (1 балл)</td><td class="b">2</td></tr>
     <tr><td class="num">4</td><td>әр кейіпкердің қасиеті мен әрекетін мәтінге сай сипаттайды (әр кейіпкерге 1 балл)</td><td class="b">4</td></tr>
-    <tr><td class="num">5</td><td>өз пікірін нақты білдіреді (1 балл); шығармалардан дәлел келтіреді (1 балл)</td><td class="b">2</td></tr>
+    <tr><td class="num">5</td><td>Сейітқұлдың бойындағы қасиеттерді мәтінге сай жазады (1 балл); ағасының бойындағы қасиеттерді мәтінге сай жазады (1 балл)</td><td class="b">2</td></tr>
     <tr><td></td><td><b>Барлығы</b></td><td class="b"><b>15</b></td></tr>
   </table></div>
   <div class="ans">
