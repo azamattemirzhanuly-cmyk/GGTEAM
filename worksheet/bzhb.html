@@ -1,0 +1,199 @@
+<title>Ыбырай мен Дулат: БЖБ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&display=swap">
+<style>
+/* Layout: two A4 sheets for the student, one teacher sheet with descriptors. Single paper look on purpose. */
+:root {
+  color-scheme: light;
+  --desk: #E9ECEF;
+  --paper: #FFFFFF;
+  --ink: #1E2430;
+  --soft: #545C6B;
+  --blue: #1D5C86;
+  --blue-tint: #E8F0F6;
+  --ochre: #9A5F12;
+  --rule: #B9C0CA;
+  --serif: 'PT Serif', Georgia, serif;
+  --sans: 'PT Sans', Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--desk); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.4;
+  padding-block: 24px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.sheet { max-width: 820px; margin: 0 auto 24px; background: var(--paper); padding: 32px 40px 36px; box-shadow: 0 1px 3px rgba(30,36,48,.12); }
+.kicker { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); font-weight: 700; margin: 0 0 4px; }
+h1 { font-family: var(--serif); font-size: 26px; line-height: 1.15; margin: 0 0 10px; text-wrap: balance; }
+.meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); font-size: 13.5px; }
+.meta > div { background: var(--paper); padding: 6px 10px; min-width: 0; }
+.meta .wide { grid-column: 1 / -1; }
+.meta .lbl { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); font-weight: 700; }
+.meta ul { margin: 2px 0 0; padding-left: 18px; }
+.who { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px; margin: 12px 0 4px; }
+.field { display: flex; align-items: flex-end; gap: 8px; font-weight: 700; font-size: 14px; min-width: 0; }
+.field span { flex: 1; border-bottom: 1px solid var(--ink); height: 18px; min-width: 30px; }
+hr.top { border: 0; border-top: 3px solid var(--ink); margin: 12px 0 0; }
+
+section.task { padding: 14px 0 4px; border-top: 1px solid var(--rule); break-inside: avoid; }
+section.task.first { border-top: 0; }
+.task-head { display: flex; gap: 12px; align-items: baseline; margin-bottom: 6px; }
+.tnum { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--ochre); min-width: 24px; }
+h2 { font-family: var(--serif); font-size: 17px; margin: 0; line-height: 1.3; flex: 1; }
+.pts { font-family: var(--sans); font-size: 13px; font-weight: 700; color: var(--blue); white-space: nowrap; border: 1px solid var(--blue); border-radius: 3px; padding: 1px 7px; }
+.body { padding-left: 36px; }
+.lines { display: grid; margin: 2px 0 4px; }
+.lines i { display: block; height: 30px; border-bottom: 1px solid var(--rule); }
+.numbered { counter-reset: n; }
+.numbered i { counter-increment: n; position: relative; }
+.numbered i::before { content: counter(n) "."; position: absolute; left: 0; bottom: 3px; font-style: normal; color: var(--soft); font-size: 13px; }
+.tablewrap { overflow-x: auto; margin: 4px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { border: 1px solid var(--rule); padding: 6px 8px; text-align: left; vertical-align: top; }
+th { background: var(--blue-tint); }
+td.name { font-family: var(--serif); }
+td.h1 { height: 34px; }
+td.h2 { height: 84px; }
+.match { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 36px; margin: 4px 0; }
+.match ol { margin: 0; padding-left: 22px; }
+.match ul { margin: 0; padding: 0; list-style: none; }
+.match li { padding: 3px 0; }
+.match .ans { display: inline-block; width: 32px; border-bottom: 1px solid var(--ink); margin-left: 6px; }
+.tchart { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); margin: 4px 0; }
+.tchart > div { padding: 8px 10px; min-width: 0; }
+.tchart > div + div { border-left: 1px solid var(--rule); }
+.tchart b { display: block; padding-bottom: 4px; border-bottom: 2px solid var(--ink); font-size: 14px; }
+.total { display: flex; justify-content: flex-end; gap: 24px; margin-top: 14px; font-weight: 700; font-size: 15px; }
+.total span b { display: inline-block; width: 60px; border-bottom: 1px solid var(--ink); }
+.teacher h1 { font-size: 22px; }
+.teacher td.num { width: 8%; text-align: center; font-family: var(--serif); font-weight: 700; }
+.teacher td.b { width: 9%; text-align: center; font-variant-numeric: tabular-nums; }
+.teacher .ans { font-size: 13.5px; margin: 10px 0 0; }
+.teacher .ans p { margin: 4px 0; }
+
+@media (max-width: 620px) {
+  .sheet { padding: 22px 16px 28px; }
+  .meta, .who { grid-template-columns: 1fr; }
+  .body { padding-left: 0; }
+  .match, .tchart { grid-template-columns: 1fr; }
+  .tchart > div + div { border-left: 0; border-top: 1px solid var(--rule); }
+}
+@page { size: A4; margin: 11mm 13mm 11mm; }
+@media print {
+  body { background: #FFFFFF; padding: 0; }
+  .sheet { box-shadow: none; padding: 0; margin: 0; max-width: none; }
+  .page { break-after: page; }
+}
+</style>
+
+<main>
+<div class="sheet page">
+  <p class="kicker">Бөлім бойынша жиынтық бағалау · Әдебиеттік оқу</p>
+  <h1>Ыбырай Алтынсарин мен Дулат Бабатайұлы шығармалары</h1>
+  <div class="meta">
+    <div><span class="lbl">Жаһандық мән-мәтін</span>Бірегейлік пен қарым-қатынас</div>
+    <div><span class="lbl">Негізгі ұғым</span>Байланыс</div>
+    <div><span class="lbl">Орындау уақыты</span>20 минут · Жалпы балл: 20</div>
+    <div class="wide"><span class="lbl">Бағалау критерийлері</span>
+      <ul>
+        <li>Шығарманың авторы мен жанрын анықтайды; мәтіннен негізгі ақпаратты табады.</li>
+        <li>Көне сөздердің мағынасын түсіндіреді.</li>
+        <li>Кейіпкерлердің бірегейлігін (қасиеті, әрекеті) сипаттап, оларды салыстырады.</li>
+        <li>Мәтінге сүйеніп, өз пікірін дәлелдейді.</li>
+      </ul>
+    </div>
+    <div class="wide"><span class="lbl">Ойлау дағдыларының деңгейлері</span>Білу және түсіну · Қолдану · Жоғары деңгей дағдылары</div>
+  </div>
+  <div class="who">
+    <div class="field">Аты-жөні: <span></span></div>
+    <div class="field">Сынып: <span></span></div>
+    <div class="field">Күні: <span></span></div>
+  </div>
+  <hr class="top">
+
+  <section class="task first">
+    <div class="task-head"><span class="tnum">1</span><h2>Шығарманың авторы мен жанрын жаз (өлең немесе әңгіме).</h2><span class="pts">3 балл</span></div>
+    <div class="body"><div class="tablewrap"><table>
+      <tr><th style="width:44%">Шығарма</th><th style="width:34%">Авторы</th><th style="width:22%">Жанры</th></tr>
+      <tr><td class="name">«О, Ақтан жас, Ақтан жас...»</td><td></td><td></td></tr>
+      <tr><td class="name">«Қыпшақ Сейітқұл»</td><td></td><td></td></tr>
+      <tr><td class="name">«Атымтай жомарт»</td><td></td><td></td></tr>
+    </table></div></div>
+  </section>
+
+  <section class="task">
+    <div class="task-head"><span class="tnum">2</span><h2>«Атымтай жомарт». Атымтай бай бола тұрып, неге күн сайын отын кесіп, шөп тасиды? Оның төрт себебін жаз.</h2><span class="pts">4 балл</span></div>
+    <div class="body"><div class="lines numbered"><i></i><i></i><i></i><i></i></div></div>
+  </section>
+
+  <section class="task">
+    <div class="task-head"><span class="tnum">3</span><h2>«Атымтай жомарт» әңгімесіндегі көне сөздерді мағынасымен сәйкестендір.</h2><span class="pts">4 балл</span></div>
+    <div class="body"><div class="match">
+      <ol>
+        <li>әбірет <span class="ans"></span></li>
+        <li>пұл <span class="ans"></span></li>
+        <li>кем-кетік <span class="ans"></span></li>
+        <li>бейнет <span class="ans"></span></li>
+      </ol>
+      <ul>
+        <li>А) ауыр еңбек, жұмыс</li>
+        <li>Ә) ғибрат, үлгі, сабақ</li>
+        <li>Б) жоқ-жітік, мұқтаж адамдар</li>
+        <li>В) ақша, тиын</li>
+      </ul>
+    </div></div>
+  </section>
+</div>
+
+<div class="sheet page">
+  <section class="task first">
+    <div class="task-head"><span class="tnum">4</span><h2>Кейіпкерлердің бірегейлігін жаз: қандай қасиеті бар, не істейді?</h2><span class="pts">4 балл</span></div>
+    <div class="body"><div class="tablewrap"><table>
+      <tr><th style="width:24%">Кейіпкер</th><th style="width:38%">Қасиеті (мінезі)</th><th style="width:38%">Әрекеті (не істейді?)</th></tr>
+      <tr><td class="name h2">Атымтай жомарт</td><td></td><td></td></tr>
+      <tr><td class="name h2">Қыпшақ Сейітқұл</td><td></td><td></td></tr>
+      <tr><td class="name h2">Сейітқұлдың ағасы</td><td></td><td></td></tr>
+      <tr><td class="name h2">Ақтан</td><td></td><td></td></tr>
+    </table></div></div>
+  </section>
+
+  <section class="task">
+    <div class="task-head"><span class="tnum">5</span><h2>«Қыпшақ Сейітқұл». Сейітқұл мен ағасының айырмашылығы неде? Екеуінің әрекетін салыстыр.</h2><span class="pts">2 балл</span></div>
+    <div class="body"><div class="lines"><i></i><i></i><i></i><i></i></div></div>
+  </section>
+
+  <section class="task">
+    <div class="task-head"><span class="tnum">6</span><h2>Пікірталас: «Байлық адамның бірегейлігін өзгерте ме?» Өз пікіріңді жаз, шығармалардан екі дәлел келтір.</h2><span class="pts">3 балл</span></div>
+    <div class="body"><div class="tchart">
+      <div><b>Менің пікірім</b><div class="lines"><i></i><i></i><i></i><i></i></div></div>
+      <div><b>Дәлелдерім (шығармалардан)</b><div class="lines numbered"><i></i><i></i><i></i><i></i></div></div>
+    </div></div>
+  </section>
+
+  <div class="total"><span>Жинаған балы: <b></b> / 20</span><span>Мұғалімнің қолы: <b></b></span></div>
+</div>
+
+<div class="sheet teacher">
+  <p class="kicker">Мұғалімге</p>
+  <h1>Балл қою кестесі</h1>
+  <div class="tablewrap"><table>
+    <tr><th>№</th><th>Дескриптор. Білім алушы:</th><th>Балл</th></tr>
+    <tr><td class="num" rowspan="1">1</td><td>әр шығарманың авторы мен жанрын дұрыс анықтайды (әр жолға 1 балл)</td><td class="b">3</td></tr>
+    <tr><td class="num">2</td><td>Атымтайдың төрт себебін мәтінге сай жазады (әр себепке 1 балл)</td><td class="b">4</td></tr>
+    <tr><td class="num">3</td><td>көне сөздерді мағынасымен дұрыс сәйкестендіреді (әр сөзге 1 балл)</td><td class="b">4</td></tr>
+    <tr><td class="num">4</td><td>әр кейіпкердің қасиеті мен әрекетін мәтінге сай сипаттайды (әр кейіпкерге 1 балл)</td><td class="b">4</td></tr>
+    <tr><td class="num">5</td><td>Сейітқұл мен ағасының әрекетін атайды (1 балл); олардың айырмашылығын түсіндіреді (1 балл)</td><td class="b">2</td></tr>
+    <tr><td class="num">6</td><td>өз пікірін нақты білдіреді (1 балл); шығармалардан екі дәлел келтіреді (әрқайсысына 1 балл)</td><td class="b">3</td></tr>
+    <tr><td></td><td><b>Барлығы</b></td><td class="b"><b>20</b></td></tr>
+  </table></div>
+  <div class="ans">
+    <p><b>Жауаптар.</b></p>
+    <p><b>1.</b> «О, Ақтан жас, Ақтан жас...» — Дулат Бабатайұлы, өлең. «Қыпшақ Сейітқұл», «Атымтай жомарт» — Ыбырай Алтынсарин, әңгіме.</p>
+    <p><b>2.</b> 1) Байлық көңілге жел кіргізіп, кедейден жиреніп, кем-кетікке көмектесуді ұмытып кетуден қорқады. 2) Кейінгілер бай адамның жұмыс істегенін көріп, еңбектің кемшілік емес екенінен әбірет алсын. 3) Өз бейнетімен тапқан пұлға алған нан тәтті әрі бойға сіңімді болады. 4) Құдай берген дәулетті өзімсініп, тек өзіне жұмсаса, мал берген иесіне күнәлі болам деп қорқады.</p>
+    <p><b>3.</b> 1 – Ә, 2 – В, 3 – Б, 4 – А.</p>
+    <p><b>4–6.</b> Ашық тапсырмалар: оқушының мәтінге сүйеніп берген жауабы дескриптор бойынша бағаланады.</p>
+  </div>
+</div>
+</main>
